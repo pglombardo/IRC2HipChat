@@ -10,7 +10,7 @@ $hipchat_cli = HipChat::Client.new(ENV['HIPCHAT_API_TOKEN'], :api_version => 'v2
 
 bot = Cinch::Bot.new do
   configure do |c|
-    c.nick     = 'loggerbot'
+    c.nick     = 'irc2hipchat'
     c.server   = 'irc.freenode.org'
     c.channels = ["#appneta"]
   end
