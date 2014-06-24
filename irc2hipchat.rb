@@ -8,6 +8,10 @@ end
 $hc_room = 'AppNetaIRCLog'
 $hipchat_cli = HipChat::Client.new(ENV['HIPCHAT_API_TOKEN'], :api_version => 'v2')
 
+def format_message(nick, message)
+  "#{nick}: #{message}"
+end
+
 bot = Cinch::Bot.new do
   configure do |c|
     c.nick     = 'irc2hipchat'
@@ -17,7 +21,8 @@ bot = Cinch::Bot.new do
 
   # Only log channel messages
   on :channel do |m|
-    $hipchat_cli[$hc_room].send(m.user.nick, m.message, :notify => true)
+    message = format_message(m.user.nick, m.message)
+    $hipchat_cli[$hc_room].send(m.user.nick, message, :notify => true)
   end
 end
 
