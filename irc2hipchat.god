@@ -6,6 +6,8 @@ end
 
 God.watch do |w|
   w.name = 'irc2hipchat'
-  w.start = 'bundle exec ruby irc2hipchat.rb'
+  w.start = "bundle exec ruby irc2hipchat.rb"
+  w.dir = `pwd`.chomp
+  w.keepalive
 end
 
