@@ -17,7 +17,7 @@ bot = Cinch::Bot.new do
 
   # Only log channel messages
   on :channel do |m|
-    msg = "<b>#{m.user.nick}</b>: #{m.message}"
+    msg = "<em>#{m.user.nick}</em>: #{m.message}"
     $hipchat_cli[$hc_room].send('irc2hipchat', msg, { :notify => true, :color => 'green', :message_format => 'html' })
   end
 end
