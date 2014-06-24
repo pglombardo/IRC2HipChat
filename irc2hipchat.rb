@@ -9,7 +9,7 @@ $hc_room = 'AppNetaIRCLog'
 $hipchat_cli = HipChat::Client.new(ENV['HIPCHAT_API_TOKEN'], :api_version => 'v2')
 
 def format_message(nick, message)
-  "#{nick}: #{message}"
+  "<#{nick}> #{message}"
 end
 
 bot = Cinch::Bot.new do
