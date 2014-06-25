@@ -74,3 +74,14 @@ My problem was that when I forgot to boot [LimeChat for Mac](http://limechat.net
     ```bash
     bundle exec rake start
     ```
+
+# Monitoring and Performance
+
+Being AppNeta, we like to monitor performance of all things.  If you don't have a TraceView account, [sign up.  It's free](http://www.appneta.com/products/traceview/).
+
+If you have TraceView setup and installed on your host, IRC2HipChat will automatically report statistics to your dashboard.
+
+![irc2hipchat traces](https://s3.amazonaws.com/pglombardo/irc2hipchat_traces.png)
+
+
+
