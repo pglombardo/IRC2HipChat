@@ -18,7 +18,7 @@ It uses [Godrb](http://godrb.com/) by default for daemonization and monitoring b
 
 # How it Looks
 
-![irc2hipchat preview](https://s3.amazonaws.com/pglombardo/irc2hipchat_preview.png)
+![irc2hipchat preview](https://s3.amazonaws.com/pglombardo/irc2hipchat_preview.png?x=1)
 
 # How to Use It
 
