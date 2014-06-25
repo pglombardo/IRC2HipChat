@@ -10,6 +10,8 @@ GEM
       multi_xml (>= 0.5.2)
     json (1.8.1)
     multi_xml (0.5.5)
+    oboe (2.6.1.0)
+      json
     rake (10.3.2)
 
 PLATFORMS
@@ -19,4 +21,5 @@ DEPENDENCIES
   cinch
   god
   hipchat
+  oboe
   rake

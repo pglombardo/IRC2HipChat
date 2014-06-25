@@ -5,3 +5,5 @@ gem 'rake'
 gem 'god'
 gem 'cinch'
 gem 'hipchat'
+gem 'oboe'
+
