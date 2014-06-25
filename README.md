@@ -30,13 +30,16 @@ My problem was that when I forgot to boot [LimeChat for Mac](http://limechat.net
 
 # How to Use It
 
-1. Clone the repository
+1. Got Ruby?  Checkout [rbenv](https://github.com/sstephenson/rbenv) if you don't.
+
+
+2. Clone the repository
 
     ```bash
     git clone https://github.com/pglombardo/IRC2HipChat.git
     ```
   
-2. Set your environment variables
+3. Set your environment variables
 
     ```bash
       # Get your HipChat api token: http://www.hipchat.com/account/api
@@ -48,7 +51,7 @@ My problem was that when I forgot to boot [LimeChat for Mac](http://limechat.net
 
   *Zsh note*: Modify your ~/.zshrc file instead of ~/.bash_profile.
   
-3. Configure your HipChat room and IRC channel in `config.yml`
+4. Configure your HipChat room and IRC channel in `config.yml`
 
     ```yaml
     ---
@@ -58,15 +61,15 @@ My problem was that when I forgot to boot [LimeChat for Mac](http://limechat.net
     IRCNick: irc2hipchat
     ```
 
-4. Restart your shell so the new environment variables take affect
+5. Restart your shell so the new environment variables take affect
 
-5. Bundle install
+6. Bundle install
 
     ```bash
     bundle install
     ```
 
-6. Start the daemon
+7. Start the daemon
 
     ```bash
     bundle exec rake start
