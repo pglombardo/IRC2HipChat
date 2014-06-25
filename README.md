@@ -39,7 +39,8 @@ My problem was that when I forgot to boot [LimeChat for Mac](http://limechat.net
 2. Set your environment variables
 
     ```bash
-      # Get your HipChat api: http://www.hipchat.com/account/api
+      # Get your HipChat api token: http://www.hipchat.com/account/api
+      # or even better use a labeled Room Notification Token for better presentation
       echo "export HIPCHAT_API_TOKEN=xxx" >> ~/.bash_profile
     ```
 
