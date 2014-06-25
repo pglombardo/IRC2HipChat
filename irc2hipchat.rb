@@ -7,6 +7,8 @@ unless ENV.has_key?('HIPCHAT_API_TOKEN')
   abort 'Set HIPCHAT_API_TOKEN environment variable with your HipChat API Token: https://hipchat.com/account/api'
 end
 
+Oboe::Config[:tracing_mode] = 'always'
+
 $conf = YAML::load_file(File.join(__dir__, 'config.yml'))
 
 hipchat_cli = HipChat::Client.new(ENV['HIPCHAT_API_TOKEN'], :api_version => 'v2')
@@ -23,8 +25,10 @@ bot = Cinch::Bot.new do
 
   # Only log channel messages
   on :channel do |m|
-    msg = "<b>#{m.user.nick}</b>: #{m.message}"
-    $hipchat.send('irc2hipchat', msg, { :notify => true, :color => 'green', :message_format => 'html' })
+    Oboe::API.start_trace('irc2hipchat', nil, $conf) do
+      msg = "<b>#{m.user.nick}</b>: #{m.message}"
+      $hipchat.send('irc2hipchat', msg, { :notify => true, :color => 'green', :message_format => 'html' })
+    end
   end
 end
 
