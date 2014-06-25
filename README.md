@@ -32,7 +32,6 @@ It uses [Godrb](http://godrb.com/) by default for daemonization and monitoring b
 
     ```bash
       # Get your HipChat api: http://www.hipchat.com/account/api
-      # Switch to .bash_profile for non Ubuntu installations...
       echo "export HIPCHAT_API_TOKEN=xxx" >> ~/.bash_profile
     ```
 
