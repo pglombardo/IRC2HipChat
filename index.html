@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Irc2hipchat by pglombardo</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Irc2hipchat</h1>
+        <p class="header">IRC to HipChat Relay Daemon - Log all messages from an IRC channel to a HipChat room</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/pglombardo/IRC2HipChat/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/pglombardo/IRC2HipChat/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/pglombardo/IRC2HipChat">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/pglombardo">pglombardo</a></p>
+
+
+      </header>
+      <section>
+        <h1>
+<a name="irc2hipchat" class="anchor" href="#irc2hipchat"><span class="octicon octicon-link"></span></a>IRC2HipChat</h1>
+
+<p>IRC to HipChat Relay Daemon - Log all messages from an IRC channel to a HipChat room</p>
+
+<p><a href="https://github.com/pglombardo/IRC2HipChat">IRC2HipChat</a> is a short Ruby script that uses <a href="https://github.com/cinchrb/cinch">Cinch</a> to monitor IRC and re-post messages to a dedicated HipChat room using the <a href="https://rubygems.org/gems/hipchat">HipChat API gem</a>.</p>
+
+<div class="highlight highlight-ruby"><pre>  <span class="n">on</span> <span class="ss">:channel</span> <span class="k">do</span> <span class="o">|</span><span class="n">m</span><span class="o">|</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="s2">"&lt;em&gt;</span><span class="si">#{</span><span class="n">m</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">nick</span><span class="si">}</span><span class="s2">&lt;/em&gt;: </span><span class="si">#{</span><span class="n">m</span><span class="o">.</span><span class="n">message</span><span class="si">}</span><span class="s2">"</span>
+    <span class="vg">$hipchat</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">'irc2hipchat'</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="p">{</span> <span class="ss">:notify</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">:message_format</span> <span class="o">=&gt;</span> <span class="s1">'html'</span> <span class="p">})</span>
+  <span class="k">end</span>
+</pre></div>
+
+<p><em>Note: For now, this is a one way flow of traffic: To use a HipChat room to log IRC channel history.  I may pursue a full two-way IRC-to-HipChat bridge eventually but there are some complications to be addressed when trying to match HipChat users to IRC users.  TBD</em></p>
+
+<p>It uses <a href="http://godrb.com/">Godrb</a> by default for daemonization and monitoring but you really could use any daemon spawning method you prefer.</p>
+
+<h1>
+<a name="background" class="anchor" href="#background"><span class="octicon octicon-link"></span></a>Background</h1>
+
+<p><a href="http://www.appneta.com">AppNeta</a> hosts the #appneta channel on <a href="http://freenode.net/">Freenode</a> where we offer user support and answer questions.  Not as widely known, is that it's a great place to get direct chat time with the appneta team behind the scenes.  On a normal day, we have developers, sales, support and some executives all logged into IRC.</p>
+
+<p>Internally we use <a href="http://www.hipchat.com">HipChat</a> and <a href="https://github.com/danriti">Dan Riti</a> setup this bot so if someone types 'helpme' a notification gets sent to HipChat to ping the team that someone needs help in IRC.  It works great.</p>
+
+<p>My problem was that when I forgot to boot <a href="http://limechat.net/mac/">LimeChat for Mac</a>, I would log in and have zero chat history.  I know I should instead have a dedicated $5 VM running <a href="http://www.gnu.org/software/screen/">screen</a> and <a href="http://www.irssi.org/">irssi</a> somewhere but I just don't have the interest and I especially don't like screen.  So what's the logical next step?  Leverage some existing Ruby gems to create an IRC to HipChat Relay in <a href="https://github.com/pglombardo/IRC2HipChat/blob/master/irc2hipchat.rb">about 25 lines of code</a>.</p>
+
+<h1>
+<a name="how-it-looks" class="anchor" href="#how-it-looks"><span class="octicon octicon-link"></span></a>How it Looks</h1>
+
+<p><img src="https://s3.amazonaws.com/pglombardo/irc2hipchat_preview.png?x=1" alt="irc2hipchat preview"></p>
+
+<h1>
+<a name="how-to-use-it" class="anchor" href="#how-to-use-it"><span class="octicon octicon-link"></span></a>How to Use It</h1>
+
+<ol>
+<li>
+<p>Clone the repository</p>
+
+<div class="highlight highlight-bash"><pre>git clone https://github.com/pglombardo/IRC2HipChat.git
+</pre></div>
+</li>
+<li>
+<p>Set your environment variables</p>
+
+<div class="highlight highlight-bash"><pre>  <span class="c"># Get your HipChat api token: http://www.hipchat.com/account/api</span>
+  <span class="c"># or even better use a labeled Room Notification Token for better presentation</span>
+  <span class="nb">echo</span> <span class="s2">"export HIPCHAT_API_TOKEN=xxx"</span> &gt;&gt; ~/.bash_profile
+</pre></div>
+
+<p><em>Ubuntu Desktop note</em>: Modify your ~/.bashrc instead of ~/.bash_profile.</p>
+
+<p><em>Zsh note</em>: Modify your ~/.zshrc file instead of ~/.bash_profile.</p>
+</li>
+<li>
+<p>Configure your HipChat room and IRC channel in <code>config.yml</code></p>
+
+<div class="highlight highlight-yaml"><pre><span class="nn">---</span>
+<span class="l-Scalar-Plain">HipChatRoom</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">AppNetaIRCLog</span>
+<span class="l-Scalar-Plain">IRCChannel</span><span class="p-Indicator">:</span> <span class="s">'#appneta'</span>
+<span class="l-Scalar-Plain">IRCServer</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">irc.freenode.org</span>
+<span class="l-Scalar-Plain">IRCNick</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">irc2hipchat</span>
+</pre></div>
+</li>
+<li><p>Restart your shell so the new environment variables take affect</p></li>
+<li>
+<p>Bundle install</p>
+
+<div class="highlight highlight-bash"><pre>bundle install
+</pre></div>
+</li>
+<li>
+<p>Start the daemon</p>
+
+<div class="highlight highlight-bash"><pre>bundle <span class="nb">exec </span>rake start
+</pre></div>
+</li>
+</ol>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="http://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
+  </body>
+</html>
