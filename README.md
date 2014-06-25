@@ -16,6 +16,14 @@ _Note: For now, this is a one way flow of traffic: To use a HipChat room to log 
 
 It uses [Godrb](http://godrb.com/) by default for daemonization and monitoring but you really could use any daemon spawning method you prefer.
 
+# Background
+
+[AppNeta](http://www.appneta.com) hosts the #appneta channel on [Freenode](http://freenode.net/) where we offer user support and answer questions.  Not as widely known, is that it's a great place to get direct chat time with the appneta team behind the scenes.  On a normal day, we have developers, sales, support and some executives all logged into IRC.
+
+Internally we use [HipChat](http://www.hipchat.com) and [Dan Riti](https://github.com/danriti) setup this bot so if someone types 'helpme' a notification gets sent to HipChat to ping the team that someone needs help in IRC.  It works great.
+
+My problem was that when I forgot to boot [LimeChat for Mac](http://limechat.net/mac/), I would log in and have zero chat history.  I know I should instead have a dedicated $5 VM running [screen](http://www.gnu.org/software/screen/) and [irssi](http://www.irssi.org/) somewhere but I just don't have the interest and I especially don't like screen.  So what's the logical next step?  Leverage some existing Ruby gems to create an IRC to HipChat Relay in [about 25 lines of code](https://github.com/pglombardo/IRC2HipChat/blob/master/irc2hipchat.rb).
+
 # How it Looks
 
 ![irc2hipchat preview](https://s3.amazonaws.com/pglombardo/irc2hipchat_preview.png?x=1)
