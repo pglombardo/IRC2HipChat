@@ -1,7 +1,7 @@
 IRC2HipChat
 ===========
 
-IRC to HipChat Relay Daemon - Log all messages from an IRC channel to a HipChat room
+Log all messages from an IRC channel to a HipChat room.
 
 [IRC2HipChat](https://github.com/pglombardo/IRC2HipChat) is a short Ruby script that uses [Cinch](https://github.com/cinchrb/cinch) to monitor IRC and re-post messages to a dedicated HipChat room using the [HipChat API gem](https://rubygems.org/gems/hipchat).
 
