@@ -4,9 +4,13 @@ require 'rubygems'
 
 desc 'Run basic checks'
 task :check do
+  @error = false
   unless ENV.has_key?('HIPCHAT_API_TOKEN')
     puts "ERROR: HIPCHAT_API_TOKEN not set.  Please set with your HipChat API token: hipchat.com/account/api"
+    @error = true
   end
+
+  puts "Looks good!" unless @error
 end
 
 desc 'Start the IRC2HipChat daemon'
