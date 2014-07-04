@@ -3,7 +3,7 @@ include Win32
 
 # We have no good way to detect where Ruby is installed unfortunately
 # Update this line with the fully qualified path to your ruby executable
-RUBY_EXECUTABLE="C:\\Ruby200\\bin\\ruby"
+RUBY_EXECUTABLE="C:\\Ruby200\\bin\\ruby.exe"
 
 class IRC2HipChat
   class Windows
