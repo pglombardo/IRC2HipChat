@@ -10,13 +10,13 @@ class IRC2HipChat
       def register_service
 
         Service.create({
-          :service_name => 'irc2hipchat',
+          :service_name => 'IRC2HipChat',
           :host => nil,
           :service_type => Service::WIN32_OWN_PROCESS,
           :description => 'Log all messages from an IRC channel to a HipChat room',
           :start_type => Service::AUTO_START,
           :error_control => Service::ERROR_NORMAL,
-          :binary_path_name => "#{`where ruby`.chomp} -C #{`echo %cd%`.chomp} irc2hipchat.rb",
+          :binary_path_name => "ruby -C #{`echo %cd%`.chomp} irc2hipchat.rb",
           :load_order_group => 'Network',
           :dependencies => nil,
           :display_name => 'IRC2HipChat'
