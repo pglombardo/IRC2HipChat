@@ -47,10 +47,12 @@ if RUBY_PLATFORM =~ /djgpp|(cyg|ms|bcc)win|mingw/
   desc 'Register irc2hipchat as a Windows Service'
   task :register_service do
     IRC2HipChat::Windows.register_service
+    puts "Done."
   end
 
   desc 'Register irc2hipchat as a Windows Service'
   task :delete_service do
     IRC2HipChat::Windows.delete_service
+    puts "Done."
   end
 end
