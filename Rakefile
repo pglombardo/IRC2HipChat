@@ -16,7 +16,7 @@ end
 desc 'Start the IRC2HipChat daemon'
 task :start do
   if RUBY_PLATFORM =~ /djgpp|(cyg|ms|bcc)win|mingw/
-    abort "Windows Users: Run 'rake register' and then start the service with 'sc start irc2hipchat'"
+    abort "Windows Users: Run 'rake register_service' and then start the service with 'sc start irc2hipchat'"
   end
 
   command = "bundle exec god -c irc2hipchat.god"
