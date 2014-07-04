@@ -7,3 +7,4 @@ gem 'cinch'
 gem 'hipchat'
 gem 'oboe'
 
+gem "win32-service", :platforms => [ :mswin, :mingw ]
