@@ -74,6 +74,12 @@ My problem was that when I forgot to boot [LimeChat for Mac](http://limechat.net
     ```bash
     bundle exec rake start
     ```
+    
+    __Windows Users:__ Until [this PR](https://github.com/pglombardo/IRC2HipChat/pull/2) is finished and merged, run the following in a terminal instead:
+    
+    ```
+    ruby irc2hipchat.rb
+    ```
 
 # Monitoring and Performance
 
