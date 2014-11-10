@@ -1,6 +1,8 @@
 ---
-HipChatRoom: AppNetaIRCLog
-IRCChannel: '#appneta'
+HipChatServer: 127.0.0.1
+HipChatAPIKey: xxx
+HipChatRoom: 'irc2hipchat'
+IRCChannel: '#myircchannel'
 IRCServer: irc.freenode.org
 IRCNick: irc2hipchat
 

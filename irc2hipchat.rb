@@ -11,7 +11,7 @@ Oboe::Config[:tracing_mode] = 'always'
 
 $conf = YAML::load_file(File.join(__dir__, 'config.yml'))
 
-hipchat_cli = HipChat::Client.new(ENV['HIPCHAT_API_TOKEN'], :api_version => 'v2')
+hipchat_cli = HipChat::Client.new($conf['HipChatAPIKey'], :api_version => 'v2', :server_url => $conf['HipChatServer'])
 hc_room = $conf['HipChatRoom']
 
 $hipchat = hipchat_cli[hc_room]
