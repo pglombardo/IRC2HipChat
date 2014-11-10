@@ -39,37 +39,27 @@ My problem was that when I forgot to boot [LimeChat for Mac](http://limechat.net
     git clone https://github.com/pglombardo/IRC2HipChat.git
     ```
   
-3. Set your environment variables
-
-    ```bash
-      # Get your HipChat api token: http://www.hipchat.com/account/api
-      # or even better use a labeled Room Notification Token for better presentation
-      echo "export HIPCHAT_API_TOKEN=xxx" >> ~/.bash_profile
-    ```
-
-  *Ubuntu Desktop note*: Modify your ~/.bashrc instead of ~/.bash_profile.
-
-  *Zsh note*: Modify your ~/.zshrc file instead of ~/.bash_profile.
-  
-4. Configure your HipChat room and IRC channel in `config.yml`
+3. Configure your HipChat room and IRC channel in `config.yml`
 
     ```yaml
     ---
+    HipChatServer: chat.hipchat.com
+    HipChatAPIKey: xxx
     HipChatRoom: AppNetaIRCLog
     IRCChannel: '#appneta'
     IRCServer: irc.freenode.org
     IRCNick: irc2hipchat
     ```
 
-5. Restart your shell so the new environment variables take affect
+4. Restart your shell so the new environment variables take affect
 
-6. Bundle install
+5. Bundle install
 
     ```bash
     bundle install
     ```
 
-7. Start the daemon
+6. Start the daemon
 
     ```bash
     bundle exec rake start
