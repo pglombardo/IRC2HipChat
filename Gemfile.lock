@@ -8,9 +8,9 @@ GEM
     httparty (0.13.1)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
-    json (1.8.1)
+    json (1.8.2)
     multi_xml (0.5.5)
-    oboe (2.6.1.0)
+    oboe (2.7.14.1)
       json
     rake (10.3.2)
 
